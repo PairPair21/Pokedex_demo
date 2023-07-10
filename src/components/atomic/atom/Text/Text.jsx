@@ -4,7 +4,7 @@ import { Typography } from "antd";
 const {Text:TextAntd} = Typography
 
 const StyledText= styled(TextAntd)`
-    font-size: 1rem;
+    font-size: ${ ({ fontSize }) => fontSize || '1rem' } ;
     font-family: 'barcadebrawl';
 `
 

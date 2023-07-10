@@ -1,9 +1,10 @@
-import { InfoCircleFilled, HeartFilled } from "@ant-design/icons";
+import { InfoCircleFilled, HeartFilled ,BackwardOutlined } from "@ant-design/icons";
 
 const getIcon = (name) => {
     const Icons = {
         info: InfoCircleFilled,
-        heart: HeartFilled
+        heart: HeartFilled,
+        back:BackwardOutlined
     }
 
     const icon = Icons[name] || <div />

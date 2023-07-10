@@ -7,7 +7,7 @@ const StyledIcon = styled(Icon)`
     margin: ${({margin}) => margin };
     svg {
         fill: ${({ active }) => (active ? '#D03E5C' : 'currentColor') };
-        font-size: 1.3rem;
+        font-size: ${({ fontSize })=> fontSize || '1.3rem'} ;
     }
 `
 
