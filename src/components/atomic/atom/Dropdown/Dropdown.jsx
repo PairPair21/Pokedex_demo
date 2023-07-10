@@ -15,7 +15,7 @@ const Dropdown = ({title='select', menu}) =>{
     return(
         <DropdownAntd overlay={menu}>
             <Button width="100%">
-                <StyledSpace>{title} <DownOutlined /> </StyledSpace>
+                <StyledSpace>{title}    <DownOutlined /></StyledSpace>
             </Button>
         </DropdownAntd>
     )

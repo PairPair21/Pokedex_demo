@@ -8,20 +8,23 @@ const StyledDiv = styled.div `
     align-items:center;
 
     .dropdown-wrapper{
-        min-width: 20rem;
-        padding: 1rem;
+        margin-top: 1rem;
 
         .ant-btn{
             font-size: 1rem;
+            height: 3rem;
+            min-width: 20rem;
         }
     }
 `
 
 const FilterDropdown = ({ label = 'label', items = [] }) =>{
     const [selectedItem,setSelectedItem] = useState(items[0])
+
     const onItemSelect = ({item}) =>{
         setSelectedItem(item);
     }
+
     return(
         <StyledDiv>
             <Text>{label}</Text>
