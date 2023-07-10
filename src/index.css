@@ -1,36 +1,39 @@
-*{
+* {
   margin: 0;
   padding: 0;
+  font-family: 'barcadebrawl', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
 *,
 *::after,
-*::before{
+*::before {
   box-sizing: inherit;
 }
 
-html{
+html {
   box-sizing: border-box;
   font-size: 62.5%;
 
-  @media only screen and (max-width: 68.75rem) {
-    html{
+  @media only screen and (max-width: 68.75em) {
+    html {
       font-size: 50%;
     }
   }
 }
 
-@font-face{
+@font-face {
   font-family: 'barcadebrawl';
   src: url('./assets/fonts/BarcadeBrawl.ttf');
 }
 
 body {
-  font-family:'barcadebrawl',sans-serif;
+  font-family: 'barcadebrawl', sans-serif;
   font-weight: 400;
   line-height: 1.6;
-  font-size: 1.6rem;
-
+  font-size: 1rem;
   background-image: url('./assets/images/bg.png');
   background-repeat: repeat;
 }
