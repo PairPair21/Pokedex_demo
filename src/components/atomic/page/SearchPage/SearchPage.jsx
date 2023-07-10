@@ -2,9 +2,10 @@ import styled from 'styled-components';
 import { Row, Col } from 'antd';
 import { useState } from 'react';
 
-import { Logo, FilterDropdown, Search } from '@atomic';
+import { Logo, FilterDropdown, Search, PokemonCard } from '@atomic';
 
 import { regions, types, sortby } from'./helper.js';
+import { pokemonInfo } from '@/utils';
 
 import pokemonLogo from '@/assets/images/pokedex.png' ;
 
@@ -39,6 +40,13 @@ const sortbyDropdownItems = sortby.map((s)=>({
     value:s,
     label:s,
 }))
+
+const PokemonContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    justify-content: space-around;
+`
 
 const getFetchPokemonFilter= (filter) => {
     return filter
@@ -77,6 +85,9 @@ const SearchPage = () =>{
                     <Search label={'SEARCH'} placeholder="TYPING..." onChange={(v)=> onFilterChange('search',v)} />
                 </Col>
             </StyledRow>
+            <PokemonContainer>
+                {[1,2,3,4,5,6,7,8].map((x)=><PokemonCard key={x} pokemon={pokemonInfo} />)}
+            </PokemonContainer>
 
         </Container>
     )
