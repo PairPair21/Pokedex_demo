@@ -33,7 +33,7 @@ const PokemonData = ({ pokemon }) => {
                     {pokemon?.stats.map(({ base_stat, stat }, index)=>{
                         return(
                             <Col key={index} xd={12} sm={12}>
-                                <Text  fontSize="0.8rem">{stat?.name} - {base_stat}</Text>
+                                <Text  fontSize="0.8rem">&nbsp;{stat?.name}-{base_stat}&nbsp;</Text>
                             </Col>
                         )
                     })}
