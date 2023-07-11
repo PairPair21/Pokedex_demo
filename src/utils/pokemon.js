@@ -61,13 +61,13 @@ const getCardColorsByPokemonTypes = (pokemonTypes = []) => {
 };
 
 const getHeight = (pokemonHeight) => {
-  return ` ${pokemonHeight / 10} m/ ${`${Math.floor(
+  return ` ${pokemonHeight / 10} m / ${`${Math.floor(
     (pokemonHeight / 10) * 3.28
   )}'${Math.round((((pokemonHeight / 10) * 3.28) % 1) * 12)}"`}`;
 };
 
 const getWeight = (pokemonWeight) => {
-  return ` ${(pokemonWeight / 10).toFixed(1)} kg/ ${(
+  return ` ${(pokemonWeight / 10).toFixed(1)} kg / ${(
     pokemonWeight * 0.2205
   ).toFixed(1)} lbs`;
 };

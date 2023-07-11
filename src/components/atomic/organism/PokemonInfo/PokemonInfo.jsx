@@ -21,7 +21,7 @@ const PokemonInfo = ({ pokemon }) => {
             <Text>No.{pokemon?.id}</Text>
             <Text>Name:{pokemon?.name}</Text>
                 <StyledImg>
-                    <img src={pokemon?.images} width='100%' />
+                    <img src={pokemon?.image} width='100%' />
                 </StyledImg>
             <Text fontSize="0.8rem">Height:{getHeight(pokemon?.height)}</Text>
             <Text fontSize="0.8rem">Weight:{getWeight(pokemon?.weight)}</Text>
