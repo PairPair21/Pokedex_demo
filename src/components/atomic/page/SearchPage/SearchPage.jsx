@@ -1,11 +1,12 @@
 import styled from 'styled-components';
-import { Row, Col } from 'antd';
-import { useState } from 'react';
+import { Row, Col, Spin } from 'antd';
+import { useEffect, useState } from 'react';
+import { filter } from 'lodash';
 
 import { Logo, FilterDropdown, Search, PokemonCard } from '@atomic';
 
-import { regions, types, sortby } from'./helper.js';
-import { pokemonInfo } from '@/utils';
+import { regions, types, sortby, filterBySearch, filterByType, sortingBy } from'./helper.js';
+import { pokemonInfo, pokemonApiv2 } from '@/utils';
 
 import pokemonLogo from '@/assets/images/pokedex.png' ;
 
@@ -52,12 +53,59 @@ const getFetchPokemonFilter= (filter) => {
     return filter
 }
 
+const getQueryString = (region) =>{
+    if(!region) return null;
+    let query = new URLSearchParams()
+
+    query.append('limit', region?.limit);
+    query.append('offset', region?.offset);
+
+    return query.toString()
+}
+
+const getPokemonList = (pokemons=[], filters={}) => {
+
+    const { search, type, sortBy } = filters;
+
+    const pokemonLists = filter( pokemons,( pokemon ) => {
+        let remove = false
+
+        if (search && !filterBySearch(pokemon, search)){
+            remove = true
+        }
+
+        if (type && type?.value !== 'all types' && !filterByType( pokemon, type?.value )){
+            remove = true
+        }
+
+        return !remove // false-remove true-save 
+    } )
+
+    const sortedPokemonList = pokemonLists.sort(sortingBy(sortBy?.value))
+
+    const result = sortedPokemonList.map((pokemon)=>{
+        return {
+            ...pokemon,
+            image:  pokemon?.sprites?.other?.dream_world?.front_default
+        }
+    })
+
+    return result
+}
+
+const initial = {
+    data:[],
+    loading: false,
+    error:null
+} 
+
 const SearchPage = () =>{
 
-    const [filter,setFilter] = useState({})
+    const [filters,setFilters] = useState({})
+    const [ state, setState ] = useState(initial)
 
     const onFilterChange = ( key, value ) => {
-        setFilter((prevFilter)=>{
+        setFilters((prevFilter)=>{
             return {
                 ...prevFilter,
                 [key]:value
@@ -65,8 +113,45 @@ const SearchPage = () =>{
         })
     }
 
+    const queryString = getQueryString(filters?.region)
+    const pokemonLists = getPokemonList(state?.data, filters)
+
     const pokemonFilter = getFetchPokemonFilter(filter)
-    console.log({pokemonFilter});
+
+    const fecthPokemonList = async () => {
+        if (!queryString) return;
+        let pokemonList = [];
+        let fetchError = null;
+        
+        setState((prev)=>({
+            ...prev,
+            loading:true
+        }));
+
+        try {
+            const response = await pokemonApiv2.get(`pokemon?${queryString}`)
+            const pokemonResults = response?.data?.results || []
+
+            for (let pokemon of pokemonResults){
+                const response = await pokemonApiv2.get(`pokemon/${pokemon?.name}`)
+                const monster = await response?.data
+                await pokemonList.push(monster)
+            }
+        } catch (error) {
+            fetchError = error
+        }
+
+        setState((prev)=>({
+            ...prev,
+            loading: false,
+            data: pokemonList,
+            error: fetchError,
+        }))
+    }
+
+    useEffect(() => { 
+        queryString && fecthPokemonList();
+    },[queryString])
 
     return(
         <Container>
@@ -79,14 +164,14 @@ const SearchPage = () =>{
                     <FilterDropdown label="TYPE" items={typeDropdownItems} onChange={(item)=>onFilterChange('type',item)} />
                 </Col>
                 <Col xs={24} sm={12} md={6}>
-                    <FilterDropdown label="SORT BY" items={sortbyDropdownItems} onChange={(item)=>onFilterChange('sortby',item)} />
+                    <FilterDropdown label="SORT BY" items={sortbyDropdownItems} onChange={(item)=>onFilterChange('sortBy',item)} />
                 </Col>
                 <Col xs={24} sm={12} md={6}>
                     <Search label={'SEARCH'} placeholder="TYPING..." onChange={(v)=> onFilterChange('search',v)} />
                 </Col>
             </StyledRow>
             <PokemonContainer>
-                {[1,2,3,4,5,6,7,8].map((x)=><PokemonCard key={x} pokemon={pokemonInfo} />)}
+                {state?.loading ? (<Spin/>) : ([...pokemonLists].map((pokemon)=><PokemonCard key={pokemon?.id} pokemon={pokemon} />)) }
             </PokemonContainer>
 
         </Container>

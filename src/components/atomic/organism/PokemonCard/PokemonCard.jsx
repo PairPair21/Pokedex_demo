@@ -35,7 +35,7 @@ const PokemonCard = ({ pokemon} ) => {
         <Container>
             <Card left={pokemonId} right={icons} width="22rem" padding="1rem" borderRadius="1rem" bgColors={bgColors} hoverable >
                 <StyledImg>
-                    <img src={pokemon?.images} width={'100%'} />
+                    <img src={pokemon?.image} width={'100%'} height="150px" />
                 </StyledImg>
                 <Text fontsize="1.2rem">
                     {pokemon?.name}
