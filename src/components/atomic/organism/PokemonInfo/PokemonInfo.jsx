@@ -1,19 +1,7 @@
-import styled from "styled-components";
+import {styled} from "styled-components";
 
 import { Text } from "@atomic";
 import { getHeight, getWeight } from "@/utils";
-
-const InfoWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 2rem;
-    border-radius: 1.2rem;
-`
-const StyledImg = styled.div`
-    padding: 2rem;
-    max-width: 20rem;
-`
 
 const PokemonInfo = ({ pokemon }) => {
     return(
@@ -29,3 +17,15 @@ const PokemonInfo = ({ pokemon }) => {
     )
 }
 export default PokemonInfo
+
+const InfoWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 2rem;
+    border-radius: 1.2rem;
+`
+const StyledImg = styled.div`
+    padding: 2rem;
+    max-width: 20rem;
+`

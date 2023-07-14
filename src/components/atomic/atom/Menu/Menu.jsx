@@ -1,16 +1,6 @@
-import  styled  from "styled-components";
+import  {styled}  from "styled-components";
 
 import { Menu as MenuAntd } from "antd";
-
-const StyledMenu = styled(MenuAntd)`
-    max-height: 200px;
-    overflow: scroll;
-
-    .ant-dropdown-menu-item,
-    .ant-dropdown-menu-submenu-title{
-        font-size: 1rem
-    }
-`
 
 const Menu = ({ items=[], onItemSelect, style, ...props}) =>{
 
@@ -25,3 +15,13 @@ const Menu = ({ items=[], onItemSelect, style, ...props}) =>{
 }
 
 export default Menu
+
+const StyledMenu = styled(MenuAntd)`
+    max-height: 200px;
+    overflow: scroll;
+
+    .ant-dropdown-menu-item,
+    .ant-dropdown-menu-submenu-title{
+        font-size: 1rem
+    }
+`

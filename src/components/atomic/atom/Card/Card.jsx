@@ -1,18 +1,5 @@
-import  styled  from "styled-components";
+import  {styled}  from "styled-components";
 import { Card as CardAntd } from "antd";
-
-const StyledCard = styled(CardAntd)`
-    width: ${({ width }) => width || '20rem'};
-    padding: ${({ padding }) => padding || '1rem'};
-    background: ${({ bgColors }) => `linear-gradient(${bgColors[0]}, ${bgColors[1]})` };
-
-    .ant-card-body{
-        padding: 0;
-    }
-    
-    border-radius: ${({borderRadius}) => borderRadius || '0.1rem'};
-    max-width: ${({ maxWidth }) => maxWidth || '60rem'}
-`
 
 const Card = ({ left, right, children, bgColors = [], ...props }) =>{
 
@@ -45,3 +32,16 @@ const Header = ({ left, right, children }) => {
 Card.Header = Header
 
 export default Card
+
+const StyledCard = styled(CardAntd)`
+    width: ${({ width }) => width || '20rem'};
+    padding: ${({ padding }) => padding || '1rem'};
+    background: ${({ bgColors }) => `linear-gradient(${bgColors[0]}, ${bgColors[1]})` };
+
+    .ant-card-body{
+        padding: 0;
+    }
+    
+    border-radius: ${({borderRadius}) => borderRadius || '0.1rem'};
+    max-width: ${({ maxWidth }) => maxWidth || '60rem'}
+`

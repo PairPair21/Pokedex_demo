@@ -1,19 +1,11 @@
-import styled  from "styled-components";
+import {styled}  from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 import { Card, Text, IconToggle } from "@atomic"; 
 
 import { getCardColorsByPokemonTypes } from "@/utils";
 
-const Container = styled.div`
-    margin: 2rem;
-`
-
-const StyledImg = styled.div`
-    padding: 2rem;
-`
-
-const PokemonCard = ({ pokemon} ) => {
+const PokemonCard = ({ pokemon, onVote }) => {
     let navigate = useNavigate();
 
     const pokemonId = <span>No.{ pokemon?.id }</span>
@@ -24,11 +16,16 @@ const PokemonCard = ({ pokemon} ) => {
         navigate(`/pokemon?id=${pokemon?.id}`, { replace: true })
     }
 
+    const checkScore = (score) => {
+        return score > 1000 ? `${score/1000} K` : score
+    }
+
     const icons = (
-        <div>
-            <IconToggle name='heart' margin={'0 0.3rem 0 0'} />
+        <ContainerHeartStyle>
+            <Score fontSize='0.8rem'>{ pokemon.score > 0 && checkScore(pokemon.score) }</Score>
+            <IconToggle name='heart' onClick={()=>{onVote(pokemon.id)}} active={pokemon.score>0} margin={'0 0.3rem 0 0'} />
             <IconToggle name='info' isColorChangre={false} onClick={handleOnIconInfoClick} />
-        </div>
+        </ContainerHeartStyle>
     )
 
     return(
@@ -46,3 +43,19 @@ const PokemonCard = ({ pokemon} ) => {
 }
 
 export default PokemonCard
+
+const Container = styled.div`
+    margin: 2rem;
+`
+
+const StyledImg = styled.div`
+    padding: 2rem;
+`
+const Score = styled.span`
+    font-size: 0.8rem;
+    margin-right:0.3rem;
+`
+const ContainerHeartStyle = styled.div`
+    display:flex;
+    align-items:center;
+`

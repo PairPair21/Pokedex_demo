@@ -1,12 +1,7 @@
-import styled from "styled-components";
+import {styled} from "styled-components";
 import { Typography } from "antd";
 
 const {Text:TextAntd} = Typography
-
-const StyledText= styled(TextAntd)`
-    font-size: ${ ({ fontSize }) => fontSize || '1rem' } ;
-    font-family: 'barcadebrawl';
-`
 
 const Text = ({children, style, ...props })=>{
     return (
@@ -17,3 +12,9 @@ const Text = ({children, style, ...props })=>{
 }
 
 export default Text;
+
+
+const StyledText= styled(TextAntd)`
+    font-size: ${ ({ fontSize }) => fontSize || '1rem' } ;
+    font-family: 'barcadebrawl';
+`

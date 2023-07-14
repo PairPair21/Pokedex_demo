@@ -1,18 +1,11 @@
 import { useState, useEffect } from "react";
 import { Row, Col, Spin } from "antd";
-import styled from "styled-components";
+import {styled} from "styled-components";
 import { isEmpty } from "lodash";
 import { useSearchParams, useNavigate } from "react-router-dom"
  
 import { Card, PokemonInfo, PokemonData, IconToggle } from "@atomic";
 import { pokemonInfo, getCardColorsByPokemonTypes, pokemonApiv2 } from "@/utils";
-
-const Wrapper = styled.div`
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    align-items: center;
-`
 
 const initial = {
     data: {},
@@ -98,3 +91,10 @@ const PokemonInfoPage = () =>{
 }
 
 export default PokemonInfoPage
+
+const Wrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+`

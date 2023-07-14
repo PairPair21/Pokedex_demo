@@ -1,14 +1,9 @@
-import styled  from "styled-components";
+import {styled}  from "styled-components";
 
 import { Dropdown as DropdownAntd, Space } from "antd";
 import { DownOutlined } from '@ant-design/icons';
 
 import { Button } from "@atomic";
-
-const StyledSpace = styled(Space)`
-    display: flex;
-    justify-content: space-between;
-`
 
 const Dropdown = ({title='select', menu}) =>{
 
@@ -22,3 +17,8 @@ const Dropdown = ({title='select', menu}) =>{
 }
 
 export default Dropdown
+
+const StyledSpace = styled(Space)`
+    display: flex;
+    justify-content: space-between;
+`

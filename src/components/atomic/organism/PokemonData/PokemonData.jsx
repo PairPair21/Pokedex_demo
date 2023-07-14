@@ -1,14 +1,7 @@
-import styled from "styled-components";
+import {styled} from "styled-components";
 import { Row, Col } from "antd";
-import { pokemonInfo } from "@/utils";
 
 import { Text } from "@atomic";
-
-const Content = styled.div`
-    background-color: #ffffff40;
-    border-radius: 1.2rem;
-    padding: 1rem;
-`
 
 const PokemonData = ({ pokemon }) => {
     return (
@@ -44,3 +37,9 @@ const PokemonData = ({ pokemon }) => {
 }
 
 export default PokemonData
+
+const Content = styled.div`
+    background-color: #ffffff40;
+    border-radius: 1.2rem;
+    padding: 1rem;
+`

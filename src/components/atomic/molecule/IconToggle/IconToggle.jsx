@@ -1,22 +1,12 @@
 import { useState } from "react"; 
-import  styled  from "styled-components";
+import  {styled}  from "styled-components";
 
 import { Icon } from "@atomic";
 
-const StyledIcon = styled(Icon)`
-    margin: ${({margin}) => margin };
-    svg {
-        fill: ${({ active }) => (active ? '#D03E5C' : 'currentColor') };
-        font-size: ${({ fontSize })=> fontSize || '1.3rem'} ;
-    }
-`
-
-const IconToggle = ({ name, margin, isColorChangre = true, onClick, ...props }) => {
-    
-    const [active, setActive] = useState(false)
+const IconToggle = ({ name, margin, isColorChangre = true, onClick, active, ...props }) => {
 
     const handleOnClick = () =>{
-        isColorChangre && setActive(!active);
+        // isColorChangre && setActive(!active);
         onClick?.();
     }
 
@@ -26,3 +16,11 @@ const IconToggle = ({ name, margin, isColorChangre = true, onClick, ...props }) 
 }
 
 export default IconToggle
+
+const StyledIcon = styled(Icon)`
+    margin: ${({margin}) => margin };
+    svg {
+        fill: ${({ active }) => (active ? '#D03E5C' : 'currentColor') };
+        font-size: ${({ fontSize })=> fontSize || '1.3rem'} ;
+    }
+`
