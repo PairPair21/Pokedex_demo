@@ -31,10 +31,6 @@ const sortbyDropdownItems = sortby.map((s)=>({
     label:s,
 }))
 
-const getFetchPokemonFilter= (filter) => {
-    return filter
-}
-
 const getQueryString = (region) =>{
     if(!region) return null;
     let query = new URLSearchParams()
@@ -99,8 +95,6 @@ const SearchPage = ({clearToken, user, saveToken}) =>{
 
     const queryString = getQueryString(filters?.region)
     const pokemonLists = getPokemonList(state?.data, filters)
-
-    const pokemonFilter = getFetchPokemonFilter(filter)
 
     const fecthPokemonList = async () => {
         if (!queryString) return;

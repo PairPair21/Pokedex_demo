@@ -14,7 +14,7 @@ const FilterDropdown = ({ label = 'label', items = [], onChange }) =>{
         if (!items) return;
 
         const defaultItem = items[0]
-        onItemSelect({ item: defaultItem })
+        onItemSelect({ item: defaultItem });
     },[items])
 
     return(
