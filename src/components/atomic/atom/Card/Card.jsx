@@ -18,7 +18,7 @@ const StyledHeaderContainer = styled.div`
     justify-content: space-between;
 `
 
-const Header = ({ left, right, children }) => {
+const Header = ({ left, right }) => {
     return(
         <>
         <StyledHeaderContainer>

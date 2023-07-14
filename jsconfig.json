@@ -5,6 +5,7 @@
             "@/*": ["./src/*"],
             "@atomic": ["./src/components/atomic"],
             "@utils": ["./src/utils"]
-        }
+        },
+        "types": ["aria-query"]
     }
 }

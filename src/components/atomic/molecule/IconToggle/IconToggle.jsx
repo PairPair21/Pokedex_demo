@@ -1,12 +1,10 @@
-import { useState } from "react"; 
 import  {styled}  from "styled-components";
 
 import { Icon } from "@atomic";
 
-const IconToggle = ({ name, margin, isColorChangre = true, onClick, active, ...props }) => {
+const IconToggle = ({ name, margin, onClick, active, ...props }) => {
 
     const handleOnClick = () =>{
-        // isColorChangre && setActive(!active);
         onClick?.();
     }
 
