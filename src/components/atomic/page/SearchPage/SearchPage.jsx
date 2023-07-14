@@ -166,9 +166,10 @@ const SearchPage = ({clearToken, user, saveToken}) =>{
         }
     }
 
-    useEffect(() => { 
+    useEffect(() => {
         queryString && fecthPokemonList();
-    },[queryString])
+    }, [queryString]);
+
 
     return(
         <Container>

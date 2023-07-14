@@ -10,12 +10,13 @@ const FilterDropdown = ({ label = 'label', items = [], onChange }) =>{
         onChange?.(item);
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         if (!items) return;
 
-        const defaultItem = items[0]
+        const defaultItem = items[0];
         onItemSelect({ item: defaultItem });
-    },[items])
+    }, [items]);
+
 
     return(
         <StyledDiv>
