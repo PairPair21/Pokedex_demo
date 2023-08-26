@@ -7,6 +7,6 @@ const createAxios = (baseUrl) => {
 };
 
 const pokemonApiv2 = createAxios('https://pokeapi.co/api/v2/');
-const pokemonUser = createAxios('https://zany-tan-lamb-wrap.cyclic.app/');
+const pokemonUser = createAxios('https://distinct-uniform-dog.cyclic.cloud/');
 
 export { pokemonApiv2, pokemonUser };
